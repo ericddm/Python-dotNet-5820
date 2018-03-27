@@ -33,7 +33,13 @@ RefClockSource = 'PXI_CLK'
 instrSession = NIRfsa(ResourceName, True, True)
 
 # Configure Instrument
-print(instrSession.Configuration.ReferenceClock.Source.ToString())
+print("Reference Clock Source: " + instrSession.Configuration.ReferenceClock.Source.ToString())
+instrSession.Configuration.ReferenceClock.Configure(RfsaReferenceClockSource.PxiClock, 10e6)
+print("Reference Clock Source: " + instrSession.Configuration.ReferenceClock.Source.ToString())
+
+print("Acquisition Type: " + str(instrSession.Configuration.AcquisitionType))
+instrSession.Configuration.AcquisitionType = RfsaAcquisitionType.IQ
+print("Acquisition Type: " + str(instrSession.Configuration.AcquisitionType))
 
 # Close Instrument
 instrSession.Close()
