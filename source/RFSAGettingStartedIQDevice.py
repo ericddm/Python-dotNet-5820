@@ -16,7 +16,7 @@ clr.AddReference("NationalInstruments.Common")
 
 # Import .NET drivers
 import NationalInstruments
-#import System
+import System
 
 from NationalInstruments import *
 from NationalInstruments.ModularInstruments.NIRfsa import *
@@ -26,9 +26,8 @@ from NationalInstruments import PrecisionTimeSpan
 ResourceName = 'PXI1Slot2' # Instrument alias in MAX
 IQinVerticalRange = 0.5 # Vpp
 IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
-IQinRate = 1e6 # Samples per second
-SamplesperRecord = 2048
-RefClockSource = 'PXI_CLK'
+IQinRate = 10e6 # Samples per second
+SamplesPerRecord = 2048
 
 # Initialize Instrument
 instrSession = NIRfsa(ResourceName, True, True)
@@ -50,7 +49,22 @@ print("IQ In Carrier Frequency: " + str(instrSession.Configuration.IQInPortChann
 instrSession.Configuration.IQInPortChannels.CarrierFrequency = IQinCarrierFrequency
 print("IQ In Carrier Frequency: " + str(instrSession.Configuration.IQInPortChannels.CarrierFrequency))
 
-print("IQ Rate: " + str(instrSession.Configuration.IQ.IQRate))
+print("IQ In Rate: " + str(instrSession.Configuration.IQ.IQRate))
+instrSession.Configuration.IQ.IQRate = IQinRate
+print("IQ In Rate: " + str(instrSession.Configuration.IQ.IQRate))
+
+instrSession.Configuration.IQ.NumberOfRecordsIsFinite = True
+print("Number of record is finite: " + str(instrSession.Configuration.IQ.NumberOfRecordsIsFinite))
+
+instrSession.Configuration.IQ.NumberOfSamples = SamplesPerRecord
+print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.NumberOfSamples))
+
+# Begin Acquisition and read data     
+timeout = PrecisionTimeSpan(10.0)
+result = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(timeout)
+
+print(type(result))
+#NationalInstruments.DecomposeArray(result, RealData, ImaginaryData)
 
 # Close Instrument
 instrSession.Close()
