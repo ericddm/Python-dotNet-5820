@@ -5,8 +5,9 @@ import os
 
 # Location of assemblies
 dotNetFWDirectory = r"C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32"
-assy_path = os.path.join(dotNetFWDirectory, r'v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0')
-print(assy_path)
+dotNetClassLibrary = r'v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0'
+assy_path = os.path.join(dotNetFWDirectory, dotNetClassLibrary)
+print(".NET Library: " + dotNetClassLibrary)
 
 sys.path.append(assy_path)
 
@@ -15,7 +16,7 @@ clr.AddReference("NationalInstruments.Common")
 
 # Import .NET drivers
 import NationalInstruments
-import System
+#import System
 
 from NationalInstruments import *
 from NationalInstruments.ModularInstruments.NIRfsa import *
@@ -24,7 +25,7 @@ from NationalInstruments import PrecisionTimeSpan
 # Instrument Settings
 ResourceName = 'PXI1Slot2' # Instrument alias in MAX
 IQinVerticalRange = 0.5 # Vpp
-IQinPortFrequency = 0 # FPGA DSP Frequencyshift
+IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQinRate = 1e6 # Samples per second
 SamplesperRecord = 2048
 RefClockSource = 'PXI_CLK'
@@ -40,6 +41,16 @@ print("Reference Clock Source: " + instrSession.Configuration.ReferenceClock.Sou
 print("Acquisition Type: " + str(instrSession.Configuration.AcquisitionType))
 instrSession.Configuration.AcquisitionType = RfsaAcquisitionType.IQ
 print("Acquisition Type: " + str(instrSession.Configuration.AcquisitionType))
+
+print("IQ In Input Port: " + str(instrSession.Configuration.SignalPath.Advanced.InputPort))
+instrSession.Configuration.SignalPath.Advanced.InputPort = RfsaInputPort.IQIn
+print("IQ In Input Port: " + str(instrSession.Configuration.SignalPath.Advanced.InputPort))
+
+print("IQ In Carrier Frequency: " + str(instrSession.Configuration.IQInPortChannels.CarrierFrequency))
+instrSession.Configuration.IQInPortChannels.CarrierFrequency = IQinCarrierFrequency
+print("IQ In Carrier Frequency: " + str(instrSession.Configuration.IQInPortChannels.CarrierFrequency))
+
+#print("IQ In Vertical Range: " + str(instrSession.Configuration.Vertical.))
 
 # Close Instrument
 instrSession.Close()
