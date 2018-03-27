@@ -50,7 +50,7 @@ print("IQ In Carrier Frequency: " + str(instrSession.Configuration.IQInPortChann
 instrSession.Configuration.IQInPortChannels.CarrierFrequency = IQinCarrierFrequency
 print("IQ In Carrier Frequency: " + str(instrSession.Configuration.IQInPortChannels.CarrierFrequency))
 
-#print("IQ In Vertical Range: " + str(instrSession.Configuration.Vertical.))
+print("IQ Rate: " + str(instrSession.Configuration.IQ.IQRate))
 
 # Close Instrument
 instrSession.Close()
