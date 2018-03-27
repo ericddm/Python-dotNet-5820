@@ -18,7 +18,6 @@ from NationalInstruments import *
 from NationalInstruments.ModularInstruments.NIRfsa import *
 from NationalInstruments import PrecisionTimeSpan
 
-
 # VSA Settings
 resourceName = 'VST1'
 freq = 1000000000 # 1GHz
@@ -55,6 +54,8 @@ for x in range (0,20):
 
     #Disable output and close instrument session
     instrSession.Close()
+
 stop = time.clock()
+
 print "execution time:"
 print stop - start
