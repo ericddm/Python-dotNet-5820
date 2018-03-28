@@ -2,6 +2,9 @@ import clr
 import sys
 import time
 import os
+import numpy as np
+import matplotlib.pyplot as plt
+from array import array
 
 # Location of assemblies
 dotNetFWDirectory = r"C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32"
@@ -15,12 +18,12 @@ clr.AddReference("NationalInstruments.ModularInstruments.NIRfsa.Fx40")
 clr.AddReference("NationalInstruments.Common")
 
 # Import .NET drivers
-import NationalInstruments
-import System
+#import NationalInstruments
+#import System
 
-from NationalInstruments import *
 from NationalInstruments.ModularInstruments.NIRfsa import *
 from NationalInstruments import PrecisionTimeSpan
+from NationalInstruments import ComplexDouble
 
 # Instrument Settings
 ResourceName = 'PXI1Slot2' # Instrument alias in MAX
@@ -61,10 +64,32 @@ print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.Numbe
 
 # Begin Acquisition and read data     
 timeout = PrecisionTimeSpan(10.0)
-result = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(timeout)
+nicomplexdoublearray = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(timeout)
 
-print(type(result))
-#NationalInstruments.DecomposeArray(result, RealData, ImaginaryData)
+print("NIComplexDoubleArray Type: " + str(type(nicomplexdoublearray)))
+print("NIComplexDoubleArray[0]: "+ str(nicomplexdoublearray[0]))
+print("NIComplexDouble.Real Type: "+ str(type(nicomplexdoublearray[0].Real)))
+print("NIComplexDouble[0].Real: " +str(nicomplexdoublearray[0].Real))
+
+iTemp = []
+qTemp = []
+_, iTemp, qTemp = ComplexDouble.DecomposeArray(nicomplexdoublearray, iTemp, qTemp)
+
+iData = []
+qData = []
+for complexdouble in nicomplexdoublearray:
+    iData.append(complexdouble.Real)
+    qData.append(complexdouble.Imaginary)
+
+fig = plt.figure()
+
+ax0 = fig.add_subplot(211)
+ax0.plot(iData)
+
+ax1 = fig.add_subplot(2,1,2)
+ax1.plot(qData)
+
+plt.show()
 
 # Close Instrument
 instrSession.Close()
