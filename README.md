@@ -28,6 +28,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 - Install Matplotlib (optional to run demo examples)
 	- python -m pip install -U pip setuptools
 	- python -m pip install matplotlib
+	- python -m pip install numpy
 
 - Maybe you do need the .NET Core 2.1.101 SDK (leaving it last to ensure it is in fact needed)
 
