@@ -90,7 +90,7 @@ for complexdouble in nicomplexdoublearray:
 
 fig = plt.figure()
 
-ax0 = fig.add_subplot(211)
+ax0 = fig.add_subplot(2,1,1)
 ax0.plot(iData)
 
 ax1 = fig.add_subplot(2,1,2)
