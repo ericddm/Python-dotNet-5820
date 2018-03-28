@@ -2,9 +2,16 @@ import clr
 import sys
 import time
 import os
+import argparse
+
 import numpy as np
 import matplotlib.pyplot as plt
-from array import array
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--resource')
+
+args = parser.parse_args()
 
 # Location of assemblies
 dotNetFWDirectory = r"C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32"
@@ -26,7 +33,7 @@ from NationalInstruments import PrecisionTimeSpan
 from NationalInstruments import ComplexDouble
 
 # Instrument Settings
-ResourceName = 'PXI1Slot2' # Instrument alias in MAX
+ResourceName = args.resource # Instrument alias in MAX
 IQinVerticalRange = 0.5 # Vpp
 IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQinRate = 10e6 # Samples per second
