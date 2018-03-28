@@ -18,19 +18,17 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- [RFSA](http://www.ni.com/download/ni-rfsa-17.1/6894/en/) be patient it is a big download
 	- [.NET RFSA](http://www.ni.com/download/ni-rfsa-.net-class-library-17.1/6909/en/)
 
+- Install Matplotlib (optional to run demo examples)
+	- python -m pip install -U pip setuptools
+	- python -m pip install matplotlib
+	- python -m pip install numpy
+
 - Instal pythonnet
 	- [Installation Wiki](https://github.com/pythonnet/pythonnet/wiki/Installation)
 	'pip install pythonnet'
 
 - Install .NET Framework 4.6.1
 	- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
-
-- Install Matplotlib (optional to run demo examples)
-	- python -m pip install -U pip setuptools
-	- python -m pip install matplotlib
-	- python -m pip install numpy
-
-- Maybe you do need the .NET Core 2.1.101 SDK (leaving it last to ensure it is in fact needed)
 
 ### Testing the Envirotment
 - Run \source\PythondoNetTest.py
