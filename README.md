@@ -21,7 +21,6 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 - Instal pythonnet
 	- [Installation Wiki](https://github.com/pythonnet/pythonnet/wiki/Installation)
 	'pip install pythonnet'
-	- 
 
 - Install .NET Framework 4.6.1
 	- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
@@ -42,7 +41,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 This python script was created based on the RFSA exampled called: "RFSA Getting Started IQ (IQ Device).vi"
 
 ### Documentation
-	C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
+	[NINETRfsaFx40Ref](C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm)
 	http://zone.ni.com/reference/en-XX/help/375857A-01/html/allmembers_t_nationalinstruments_complexdouble/
 	https://stackoverflow.com/questions/19600315/how-to-use-a-net-method-which-modifies-in-place-in-python
 	http://ironpython.net/documentation/dotnet/dotnet.html#methods-with-ref-or-out-parameters
