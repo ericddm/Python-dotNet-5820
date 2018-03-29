@@ -31,5 +31,10 @@ ResourceName = args.resource # Instrument alias in MAX
 # Initialize Instrument
 instrSession = NIRfsg(ResourceName, True, True)
 
+# Configure Instrument
+print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
+instrSession.FrequencyReference.Configure(RfsgFrequencyReferenceSource.PxiClock, 10e6)
+print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
+
 # Close Instrument
 instrSession.Close()

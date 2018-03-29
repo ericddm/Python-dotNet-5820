@@ -59,9 +59,11 @@ print("IQ In Rate: " + str(instrSession.Configuration.IQ.IQRate))
 instrSession.Configuration.IQ.IQRate = IQinRate
 print("IQ In Rate: " + str(instrSession.Configuration.IQ.IQRate))
 
+print("Number of record is finite: " + str(instrSession.Configuration.IQ.NumberOfRecordsIsFinite))
 instrSession.Configuration.IQ.NumberOfRecordsIsFinite = True
 print("Number of record is finite: " + str(instrSession.Configuration.IQ.NumberOfRecordsIsFinite))
 
+print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.NumberOfSamples))
 instrSession.Configuration.IQ.NumberOfSamples = SamplesPerRecord
 print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.NumberOfSamples))
 

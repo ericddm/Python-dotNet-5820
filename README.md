@@ -19,7 +19,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- [.NET RFSA](http://www.ni.com/download/ni-rfsa-.net-class-library-17.1/6909/en/)
 	- [.NET RFSG](http://www.ni.com/download/ni-rfsg-.net-class-library-17.1/6912/en/)
 
-- Install Matplotlib (optional to run demo examples)
+- Install some Python Packages 
 	- python -m pip install -U pip setuptools
 	- python -m pip install matplotlib
 	- python -m pip install numpy
@@ -43,7 +43,9 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	```
 2. #### RFSGGettingStartedIQDevice.py
 	This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
-
+	```
+	python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
+	```
 ## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
 - https://github.com/pythonnet/pythonnet
