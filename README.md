@@ -36,7 +36,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 
 ## Examples
 1. #### RFSA Getting StartedIQDevice.py
-This python script was created based on the RFSA exampled called: "RFSA Getting Started IQ (IQ Device).vi"
+	This python script was created based on the RFSA exampled called: "RFSA Getting Started IQ (IQ Device).vi"
 
 ### Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
