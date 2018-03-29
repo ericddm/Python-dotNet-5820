@@ -47,7 +47,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
 	```
 
-	Example of using both RFSA and RFSG with a single mmpx cable looping I In to I
+Example of using both RFSA and RFSG with a pair mmpx cables looping I In to I
 Out. 
 
 	![ILoopback](images/ILoopbackPicture.PNG)
