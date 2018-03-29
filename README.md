@@ -34,7 +34,8 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 - Run \source\PythondoNetTest.py
 	This examples simply import the clr and rfsa .NET libraries.
 
-### RFSA Getting StartedIQDevice.py
+## Examples
+- ### RFSA Getting StartedIQDevice.py
 This python script was created based on the RFSA exampled called: "RFSA Getting Started IQ (IQ Device).vi"
 
 ### Documentation
