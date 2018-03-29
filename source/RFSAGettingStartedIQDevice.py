@@ -32,7 +32,7 @@ from NationalInstruments import ComplexDouble
 ResourceName = args.resource # Instrument alias in MAX
 IQinVerticalRange = 0.5 # Vpp
 IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
-IQinRate = 10e6 # Samples per second
+IQinRate = 1e6 # Samples per second
 SamplesPerRecord = 2048
 
 # Initialize Instrument

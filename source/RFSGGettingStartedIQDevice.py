@@ -4,6 +4,8 @@ import time
 import os
 import argparse
 
+import numpy as np
+
 # Argparse section
 parser = argparse.ArgumentParser()
 parser.add_argument('--resource')
@@ -27,8 +29,8 @@ from NationalInstruments import ComplexDouble
 
 # Instrument Settings
 ResourceName = args.resource # Instrument alias in MAX
-IQOutCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
-IQOutPortLevel = 1
+IQOutCarrierFrequency = 1000.0 # FPGA DSP Frequencyshift
+IQOutPortLevel = 0.5
 
 # Initialize Instrument
 instrSession = NIRfsg(ResourceName, True, True)
@@ -53,6 +55,30 @@ print("IQ Out Port Level: " + str(instrSession.IQOutPort["0"].Level))
 print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
 instrSession.Arb.GenerationMode = RfsgWaveformGenerationMode.ArbitraryWaveform
 print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
+
+print("IQ Out Power Level Type: " + str(instrSession.RF.PowerLevelType))
+instrSession.RF.PowerLevelType = RfsgRFPowerLevelType.PeakPower
+print("IQ Out Power Level Type: " + str(instrSession.RF.PowerLevelType))
+
+print("IQ Out IQ Rate: " + str(instrSession.Arb.IQRate))
+
+print("IQ Out isWaveformRepeatCountFinite: " + str(instrSession.Arb.IsWaveformRepeatCountFinite))
+
+print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount))
+
+# Write DC values to I
+iData = np.ones(1024)
+qData = np.zeros(1024)
+instrSession.Arb.WriteWaveform("wfm0", iData, qData)
+
+# Start Generation
+instrSession.Initiate()
+
+# Wait for user to stop script
+input("Press Enter to continue...")
+
+# Abort Generation
+instrSession.Abort()
 
 # Close Instrument
 instrSession.Close()
