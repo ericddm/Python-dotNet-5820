@@ -38,7 +38,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 1. #### RFSA Getting StartedIQDevice.py
 	This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
 
-### Documentation
+## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
 - https://github.com/pythonnet/pythonnet
 - http://zone.ni.com/reference/en-XX/help/375857A-01/html/allmembers_t_nationalinstruments_complexdouble/
@@ -46,5 +46,5 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 - http://ironpython.net/documentation/dotnet/dotnet.html#methods-with-ref-or-out-parameters
 - https://stackoverflow.com/questions/16484167/python-net-framework-reference-argument-double
 
-### License
+## License
 [Apache License Version 2.0](https://github.com/NISystemsEngineering/Python-dotNet-5820/blob/master/LICENSE.md)
