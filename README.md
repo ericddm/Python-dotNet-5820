@@ -37,12 +37,12 @@ This scripts simply loads the clr and the RFSA .NET class library
 python source\PythondoNetTest.py
 ```
 ## Examples
-1. ##### RFSAGettingStartedIQDevice.py
+##### RFSAGettingStartedIQDevice.py
 This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
 ```
 python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
 ```
-2. #### RFSGGettingStartedIQDevice.py
+#### RFSGGettingStartedIQDevice.py
 This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
 ```
 python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
