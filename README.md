@@ -44,3 +44,6 @@ This python script was created based on the RFSA exampled called: "RFSA Getting 
 - https://stackoverflow.com/questions/19600315/how-to-use-a-net-method-which-modifies-in-place-in-python
 - http://ironpython.net/documentation/dotnet/dotnet.html#methods-with-ref-or-out-parameters
 - https://stackoverflow.com/questions/16484167/python-net-framework-reference-argument-double
+
+### License
+[Apache License Version 2.0](https://github.com/NISystemsEngineering/Python-dotNet-5820/blob/master/LICENSE.md)
