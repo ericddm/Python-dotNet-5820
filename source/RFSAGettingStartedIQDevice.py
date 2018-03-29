@@ -75,7 +75,7 @@ nicomplexdoublearray = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(tim
 
 print("NIComplexDoubleArray Type: " + str(type(nicomplexdoublearray)))
 print("NIComplexDoubleArray[0]: "+ str(nicomplexdoublearray[0]))
-print("NIComplexDouble.Real Type: "+ str(type(nicomplexdoublearray[0].Real)))
+print("NIComplexDouble.[0]Real Type: "+ str(type(nicomplexdoublearray[0].Real)))
 print("NIComplexDouble[0].Real: " +str(nicomplexdoublearray[0].Real))
 
 iTemp = []
