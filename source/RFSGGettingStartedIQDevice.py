@@ -27,6 +27,8 @@ from NationalInstruments import ComplexDouble
 
 # Instrument Settings
 ResourceName = args.resource # Instrument alias in MAX
+IQOutCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
+IQOutPortLevel = 1
 
 # Initialize Instrument
 instrSession = NIRfsg(ResourceName, True, True)
@@ -35,6 +37,22 @@ instrSession = NIRfsg(ResourceName, True, True)
 print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
 instrSession.FrequencyReference.Configure(RfsgFrequencyReferenceSource.PxiClock, 10e6)
 print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
+
+print("IQ Out Output Port: " + str(instrSession.Arb.OutputPort))
+instrSession.Arb.OutputPort = RfsgOutputPort.IQOut
+print("IQ Out Output Port: " + str(instrSession.Arb.OutputPort))
+
+print("IQ Out Carrier Frequency: " + str(instrSession.IQOutPort.CarrierFrequency))
+instrSession.IQOutPort.CarrierFrequency = IQOutCarrierFrequency
+print("IQ Out Carrier Frequency: " + str(instrSession.IQOutPort.CarrierFrequency))
+
+print("IQ Out Port Level: " + str(instrSession.IQOutPort["0"].Level))
+instrSession.IQOutPort["0"].Level = IQOutPortLevel
+print("IQ Out Port Level: " + str(instrSession.IQOutPort["0"].Level))
+
+print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
+instrSession.Arb.GenerationMode = RfsgWaveformGenerationMode.ArbitraryWaveform
+print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
 
 # Close Instrument
 instrSession.Close()
