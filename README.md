@@ -37,19 +37,20 @@ This scripts simply loads the clr and the RFSA .NET class library
 python source\PythondoNetTest.py
 ```
 ## Examples
-##### RFSAGettingStartedIQDevice.py
-This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
-```
-python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
-```
 #### RFSGGettingStartedIQDevice.py
 This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
 ```
 python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
 ```
 
-Example of using both RFSA and RFSG with a pair mmpx cables looping I In to I
-Out.
+##### RFSAGettingStartedIQDevice.py
+This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
+```
+python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
+```
+
+#### Example of using both RFSA and RFSG
+Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency, not by generating a waveform of 1 KHz at the configure IQ Rate.
 
 ![ILoopback](images/ILoopbackPicture.PNG)
 	
