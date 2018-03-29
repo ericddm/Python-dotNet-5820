@@ -38,20 +38,20 @@ python source\PythondoNetTest.py
 ```
 ## Examples
 1. ##### RFSAGettingStartedIQDevice.py
-	This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
-	```
-	python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
-	```
+This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
+```
+python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
+```
 2. #### RFSGGettingStartedIQDevice.py
-	This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
-	```
-	python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
-	```
+This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
+```
+python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
+```
 
-	Example of using both RFSA and RFSG with a pair mmpx cables looping I In to I
+Example of using both RFSA and RFSG with a pair mmpx cables looping I In to I
 Out.
 
-	![ILoopback](images/ILoopbackPicture.PNG)
+![ILoopback](images/ILoopbackPicture.PNG)
 	
 ## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
