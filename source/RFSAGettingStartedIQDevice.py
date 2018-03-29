@@ -7,10 +7,9 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Argparse section
 parser = argparse.ArgumentParser()
-
 parser.add_argument('--resource')
-
 args = parser.parse_args()
 
 # Location of assemblies
@@ -25,9 +24,6 @@ clr.AddReference("NationalInstruments.ModularInstruments.NIRfsa.Fx40")
 clr.AddReference("NationalInstruments.Common")
 
 # Import .NET drivers
-#import NationalInstruments
-#import System
-
 from NationalInstruments.ModularInstruments.NIRfsa import *
 from NationalInstruments import PrecisionTimeSpan
 from NationalInstruments import ComplexDouble
@@ -73,21 +69,33 @@ print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.Numbe
 timeout = PrecisionTimeSpan(10.0)
 nicomplexdoublearray = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(timeout)
 
-print("NIComplexDoubleArray Type: " + str(type(nicomplexdoublearray)))
-print("NIComplexDoubleArray[0]: "+ str(nicomplexdoublearray[0]))
-print("NIComplexDouble.[0]Real Type: "+ str(type(nicomplexdoublearray[0].Real)))
-print("NIComplexDouble[0].Real: " +str(nicomplexdoublearray[0].Real))
+# Helper Prints for Data structure peek
+print("NI ComplexDoubleArray Type: " + str(type(nicomplexdoublearray)))
+print("NI ComplexDoubleArray[0]: "+ str(nicomplexdoublearray[0]))
+print("NI ComplexDouble.[0]Real Type: "+ str(type(nicomplexdoublearray[0].Real)))
+print("NI ComplexDouble[0].Real: " +str(nicomplexdoublearray[0].Real))
 
+# Using NI DecomposeArray to split real and imaginary
+# This is not necessary and you can use complexdoublearray[i].Real directly
+# but other NI functions may returns more complex structures and using the
+# NI common methods should prove to be easier
 iTemp = []
 qTemp = []
 _, iTemp, qTemp = ComplexDouble.DecomposeArray(nicomplexdoublearray, iTemp, qTemp)
 
+print("NI ComplexDouble.DecomposeArray Type: " + str(type(iTemp)))
+print("NI Syste.Double[0]: " + str(iTemp[0]))
+
+# Convert System.Double to floats
 iData = []
 qData = []
-for complexdouble in nicomplexdoublearray:
-    iData.append(complexdouble.Real)
-    qData.append(complexdouble.Imaginary)
+for i in iTemp:
+    iData.append(float(i))
 
+for q in qTemp:
+    qData.append(float(q))
+
+# Plot Data
 fig = plt.figure()
 
 ax0 = fig.add_subplot(2,1,1)

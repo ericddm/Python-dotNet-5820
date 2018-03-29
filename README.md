@@ -17,6 +17,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- [National Instruments .NET Support](http://www.ni.com/product-documentation/14434/en/)
 	- [RFSA](http://www.ni.com/download/ni-rfsa-17.1/6894/en/) be patient it is a big download
 	- [.NET RFSA](http://www.ni.com/download/ni-rfsa-.net-class-library-17.1/6909/en/)
+	- [.NET RFSG](http://www.ni.com/download/ni-rfsg-.net-class-library-17.1/6912/en/)
 
 - Install Matplotlib (optional to run demo examples)
 	- python -m pip install -U pip setuptools
@@ -35,8 +36,13 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	This examples simply import the clr and rfsa .NET libraries.
 
 ## Examples
-1. #### RFSA Getting StartedIQDevice.py
+1. ##### RFSAGettingStartedIQDevice.py
 	This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
+	```
+	python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
+	```
+2. #### RFSGGettingStartedIQDevice.py
+	This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
 
 ## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
@@ -47,4 +53,4 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 - https://stackoverflow.com/questions/16484167/python-net-framework-reference-argument-double
 
 ## License
-[Apache License Version 2.0](https://github.com/NISystemsEngineering/Python-dotNet-5820/blob/master/LICENSE.md)
+[MIT License](https://github.com/NISystemsEngineering/Python-dotNet-5820/blob/master/LICENSE.md)
