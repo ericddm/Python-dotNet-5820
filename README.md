@@ -32,9 +32,9 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
 
 ### Testing the Envirotment	
-	```
+```
 	python source\PythondoNetTest.py
-	```
+```
 
 ## Examples
 1. ##### RFSAGettingStartedIQDevice.py
