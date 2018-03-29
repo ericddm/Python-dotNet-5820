@@ -31,8 +31,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 - Install .NET Framework 4.6.1
 	- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
 
-### Testing the Envirotment
-	This examples simply import the clr and the RFSA .NET libraries.
+### Testing the Envirotment	
 	```
 	python source\PythondoNetTest.py
 	```
