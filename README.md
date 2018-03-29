@@ -49,9 +49,8 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 
 Example of using both RFSA and RFSG with a pair mmpx cables looping I In to I
 Out.
-
-![ILoopback](images/ILoopbackPicture.PNG)
-
+	![ILoopback](images/ILoopbackPicture.PNG)
+	
 ## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
 - "C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsg 17.1.0\NINETRfsgFx40Ref.chm"
