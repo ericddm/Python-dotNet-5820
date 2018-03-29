@@ -50,7 +50,7 @@ python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
 ```
 
 #### Example of using both RFSA and RFSG
-Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency, not by generating a waveform of 1 KHz at the configure IQ Rate.
+Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate.
 
 ![ILoopback](images/ILoopbackPicture.PNG)
 	
