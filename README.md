@@ -32,26 +32,27 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
 
 ### Testing the Envirotment
-    This scripts simply loads the clr and the RFSA .NET class library
-	```
-	python source\PythondoNetTest.py
-	```
+This scripts simply loads the clr and the RFSA .NET class library
+```
+python source\PythondoNetTest.py
+```
 ## Examples
-1. ##### RFSAGettingStartedIQDevice.py
-	This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
-	```
-	python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
-	```
-2. #### RFSGGettingStartedIQDevice.py
-	This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
-	```
-	python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
-	```
+#### RFSGGettingStartedIQDevice.py
+This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
+```
+python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
+```
 
-	Example of using both RFSA and RFSG with a pair mmpx cables looping I In to I
-Out.
+##### RFSAGettingStartedIQDevice.py
+This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
+```
+python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
+```
 
-	![ILoopback](images/ILoopbackPicture.PNG)
+#### Example of using both RFSA and RFSG
+Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate.
+
+![ILoopback](images/ILoopbackPicture.PNG)
 	
 ## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
