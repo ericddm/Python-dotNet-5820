@@ -14,10 +14,7 @@ sys.path.append(assy_path)
 clr.AddReference("NationalInstruments.ModularInstruments.NIRfsa.Fx40")
 clr.AddReference("NationalInstruments.Common")
 
-#Import .NET drivers
-import NationalInstruments
-import System
-
-from NationalInstruments import *
+# Import .NET drivers
 from NationalInstruments.ModularInstruments.NIRfsa import *
 from NationalInstruments import PrecisionTimeSpan
+from NationalInstruments import ComplexDouble

@@ -4,7 +4,7 @@ This examples shows how to setup a system and run very basics RF examples from P
 approach are two approaches: calling the CLR (Common Language Runtime) to directly iterface
 with .NET classes and creating wrappers around the driver c dll using cpython.
 
-### Setting up Enviroment
+### Setting up Environment
 
 - Install [Python](https://www.python.org/downloads/) 3.6.4
 	- Version of Python is tied to Python .NET, pick your version according to their support
@@ -19,19 +19,19 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- [.NET RFSG](http://www.ni.com/download/ni-rfsg-.net-class-library-17.1/6912/en/)
 	- [National Instruments .NET Support](http://www.ni.com/product-documentation/14434/en/)
 
-- Install some Python Packages 
+- Install some Python Packages
 	- python -m pip install -U pip setuptools
 	- python -m pip install matplotlib
 	- python -m pip install numpy
 
-- Instal pythonnet
+- Install pythonnet
 	- [Installation Wiki](https://github.com/pythonnet/pythonnet/wiki/Installation)
 	'pip install pythonnet'
 
 - Install .NET Framework 4.6.1
 	- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
 
-### Testing the Envirotment
+### Testing the Environment
 This scripts simply loads the clr and the RFSA .NET class library
 ```
 python source\PythondoNetTest.py
@@ -53,7 +53,7 @@ python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
 Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate.
 
 ![ILoopback](images/ILoopbackPicture.PNG)
-	
+
 ## Documentation
 - C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0\NINETRfsaFx40Ref.chm
 - "C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32\v4.0.30319\NationalInstruments.ModularInstruments.NIRfsg 17.1.0\NINETRfsgFx40Ref.chm"
