@@ -13,11 +13,11 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 	- Customization (pip, Documentation, IDLE, Test Suite, py launcher)
 	- Everything else left as default (03-26-2018)
 
-- Install NI-RFSA .NET Support
-	- [National Instruments .NET Support](http://www.ni.com/product-documentation/14434/en/)
+- Install Software Support
 	- [RFSA](http://www.ni.com/download/ni-rfsa-17.1/6894/en/) be patient it is a big download
 	- [.NET RFSA](http://www.ni.com/download/ni-rfsa-.net-class-library-17.1/6909/en/)
 	- [.NET RFSG](http://www.ni.com/download/ni-rfsg-.net-class-library-17.1/6912/en/)
+	- [National Instruments .NET Support](http://www.ni.com/product-documentation/14434/en/)
 
 - Install some Python Packages 
 	- python -m pip install -U pip setuptools
