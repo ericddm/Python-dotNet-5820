@@ -34,7 +34,7 @@ with .NET classes and creating wrappers around the driver c dll using cpython.
 ### Testing the Environment
 This scripts simply loads the clr and the RFSA .NET class library
 ```
-python source\PythondoNetTest.py
+ python source\PythondotNetTest.py
 ```
 ## Examples
 #### RFSGGettingStartedIQDevice.py
