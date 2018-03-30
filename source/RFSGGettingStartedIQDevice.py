@@ -48,9 +48,9 @@ print("IQ Out Carrier Frequency: " + str(instrSession.IQOutPort.CarrierFrequency
 instrSession.IQOutPort.CarrierFrequency = IQOutCarrierFrequency
 print("IQ Out Carrier Frequency: " + str(instrSession.IQOutPort.CarrierFrequency))
 
-print("IQ Out Port Level: " + str(instrSession.IQOutPort["0"].Level))
-instrSession.IQOutPort["0"].Level = IQOutPortLevel
-print("IQ Out Port Level: " + str(instrSession.IQOutPort["0"].Level))
+print("IQ Out Port Level: " + str(instrSession.IQOutPort[""].Level))
+instrSession.IQOutPort[""].Level = IQOutPortLevel
+print("IQ Out Port Level: " + str(instrSession.IQOutPort[""].Level))
 
 print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
 instrSession.Arb.GenerationMode = RfsgWaveformGenerationMode.ArbitraryWaveform
