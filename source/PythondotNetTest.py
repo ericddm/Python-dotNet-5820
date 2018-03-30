@@ -5,10 +5,9 @@ import os
 
 # Location of assemblies
 dotNetFWDirectory = r"C:\Program Files (x86)\IVI Foundation\IVI\Microsoft.NET\Framework32"
-
-assy_path = os.path.join(dotNetFWDirectory, r'v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0')
-
-print(assy_path)
+dotNetClassLibrary = r'v4.0.30319\NationalInstruments.ModularInstruments.NIRfsa 17.1.0'
+assy_path = os.path.join(dotNetFWDirectory, dotNetClassLibrary)
+print(".NET Library: " + dotNetClassLibrary)
 
 sys.path.append(assy_path)
 
