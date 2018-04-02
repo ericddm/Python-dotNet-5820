@@ -39,18 +39,31 @@ This scripts simply loads the clr and the RFSA .NET class library
 ## Examples
 #### RFSGGettingStartedIQDevice.py
 This python script was created based on the RFSA example called: "RFSG Getting Started Finite Generation (IQ Device).vi"
+
+##### RFSAGettingStartedIQDevice.py
+This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
+
+#### Example using both RFSA and RFSG
+Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate. Run RFSG first which will continuosly generate a tone and then run the RFSA script.
+
 ```
 python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
 ```
 
-##### RFSAGettingStartedIQDevice.py
-This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
 ```
 python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
 ```
 
-#### Example of using both RFSA and RFSG
-Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate.
+#### Example using both RFSA and RFSG and a trigger
+This example is very simyilar to first none triggered example but configures the RFSG to export a start trigger and the RFSA to wait _10 seconds_ for a trigger. For simplicity both example use PXI_Trig0 and the funcionallity is enabled by adding the tag _--trigger_.
+
+```
+python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2 --trigger
+```
+
+```
+python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2 --trigger
+```
 
 ![ILoopback](images/ILoopbackPicture.PNG)
 
