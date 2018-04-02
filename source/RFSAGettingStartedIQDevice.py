@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 # Argparse section
 parser = argparse.ArgumentParser()
 parser.add_argument('--resource')
+parser.add_argument('--trigger', action='store_true', default=False, \
+help="select start trigger source")
 args = parser.parse_args()
 
 # Location of assemblies
@@ -36,7 +38,7 @@ IQinRate = 1e6 # Samples per second
 SamplesPerRecord = 2048
 
 # Initialize Instrument
-instrSession = NIRfsa(ResourceName, True, True)
+instrSession = NIRfsa(ResourceName, True, False)
 
 # Configure Instrument
 print("Reference Clock Source: " + instrSession.Configuration.ReferenceClock.Source.ToString())
@@ -67,11 +69,28 @@ print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.Numbe
 instrSession.Configuration.IQ.NumberOfSamples = SamplesPerRecord
 print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.NumberOfSamples))
 
+if args.trigger:
+    print("IQ In Start Trigger: " +
+    str(instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source))
+    instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source = \
+    RfsaDigitalEdgeStartTriggerSource.PxiTriggerLine0
+    print("IQ In Start Trigger: " +
+    str(instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source))
+    print("IQ In Start Trigger Type: " +
+    str(instrSession.Configuration.Triggers.StartTrigger.Type))
+    instrSession.Configuration.Triggers.StartTrigger.Type = \
+    RfsaStartTriggerType.DigitalEdge
+    print("IQ In Start Trigger Type: " +
+    str(instrSession.Configuration.Triggers.StartTrigger.Type))
+
+    print("Waiting for tigger.........")
+ 
 # Begin Acquisition and read data     
 timeout = PrecisionTimeSpan(10.0)
 nicomplexdoublearray = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(timeout)
 
 # Helper Prints for Data structure peek
+print("")
 print("NI ComplexDoubleArray Type: " + str(type(nicomplexdoublearray)))
 print("NI ComplexDoubleArray[0]: "+ str(nicomplexdoublearray[0]))
 print("NI ComplexDouble.[0]Real Type: "+ str(type(nicomplexdoublearray[0].Real)))

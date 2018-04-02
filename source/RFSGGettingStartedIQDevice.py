@@ -9,6 +9,8 @@ import numpy as np
 # Argparse section
 parser = argparse.ArgumentParser()
 parser.add_argument('--resource')
+parser.add_argument('--trigger', action='store_true', default=False, \
+help="select start trigger source")
 args = parser.parse_args()
 
 # Location of assemblies
@@ -33,7 +35,7 @@ IQOutCarrierFrequency = 1000.0 # FPGA DSP Frequencyshift
 IQOutPortLevel = 0.5
 
 # Initialize Instrument
-instrSession = NIRfsg(ResourceName, True, True)
+instrSession = NIRfsg(ResourceName, True, False)
 
 # Configure Instrument
 print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
@@ -61,9 +63,15 @@ instrSession.RF.PowerLevelType = RfsgRFPowerLevelType.PeakPower
 print("IQ Out Power Level Type: " + str(instrSession.RF.PowerLevelType))
 
 print("IQ Out IQ Rate: " + str(instrSession.Arb.IQRate))
+instrSession.Arb.IQRate = 1e6
+print("IQ Out IQ Rate: " + str(instrSession.Arb.IQRate))
 
 print("IQ Out isWaveformRepeatCountFinite: " + str(instrSession.Arb.IsWaveformRepeatCountFinite))
+instrSession.Arb.IsWaveformRepeatCountFinite = False
+print("IQ Out isWaveformRepeatCountFinite: " + str(instrSession.Arb.IsWaveformRepeatCountFinite))
 
+print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount))
+instrSession.Arb.WaveformRepeatCount = 1
 print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount))
 
 # Write DC values to I
@@ -71,11 +79,22 @@ iData = np.ones(1024)
 qData = np.zeros(1024)
 instrSession.Arb.WriteWaveform("wfm0", iData, qData)
 
+if args.trigger == True:
+    print("IQ Out Export Start Trigger: " +
+    str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
+    instrSession.Triggers.StartTrigger.ExportedOutputTerminal = \
+    RfsgStartTriggerExportedOutputTerminal.FromString("PXI_Trig0")
+    print("IQ Out Export Start Trigger: " +
+    str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
+
+instrSession.DriverUtility.Commit()
+
 # Start Generation
 instrSession.Initiate()
 
-# Wait for user to stop script
-input("Press Enter to continue...")
+if args.trigger == False:
+    # Wait for user to stop script
+    input("Press Enter to continue...")
 
 # Abort Generation
 instrSession.Abort()
