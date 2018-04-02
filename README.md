@@ -47,22 +47,22 @@ This python script was created based on the RFSA example called: "RFSA Getting S
 Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate. Run RFSG first which will continuosly generate a tone and then run the RFSA script.
 
 ```
-python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2
+python source\RFSGGettingStartedIQDevice.py --resource <your device name>
 ```
 
 ```
-python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2
+python source\RFSAGettingStartedIQDevice.py --resource <your device name>
 ```
 
 #### Example using both RFSA and RFSG and a trigger
-This example is very simyilar to first none triggered example but configures the RFSG to export a start trigger and the RFSA to wait _10 seconds_ for a trigger. For simplicity both example use PXI_Trig0 and the funcionallity is enabled by adding the tag _--trigger_.
+This example is very simyilar to first none triggered example but configures the RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a trigger. For simplicity both example use PXI_Trig0 and the funcionallity is enabled by adding the tag __--trigger__.
 
 ```
-python source\RFSAGettingStartedIQDevice.py --resource PXI1Slot2 --trigger
+python source\RFSAGettingStartedIQDevice.py --resource <your device name> --trigger
 ```
 
 ```
-python source\RFSGGettingStartedIQDevice.py --resource PXI1Slot2 --trigger
+python source\RFSGGettingStartedIQDevice.py --resource <your device name> --trigger
 ```
 
 ![ILoopback](images/ILoopbackPicture.PNG)
