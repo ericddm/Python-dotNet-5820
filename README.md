@@ -44,7 +44,7 @@ This python script was created based on the RFSA example called: "RFSG Getting S
 This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
 
 #### Example using both RFSA and RFSG
-Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuosly generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate. Run RFSG first which will continuosly generate a tone and then run the RFSA script.
+Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuously generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate. Run RFSG first which will continuously generate a tone and then run the RFSA script.
 
 ```
 python source\RFSGGettingStartedIQDevice.py --resource <your device name>
@@ -55,7 +55,7 @@ python source\RFSAGettingStartedIQDevice.py --resource <your device name>
 ```
 
 #### Example using both RFSA and RFSG and a trigger
-This example is very simyilar to first none triggered example but configures the RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a trigger. For simplicity both example use PXI_Trig0 and the funcionallity is enabled by adding the tag __--trigger__.
+This example is very similar to first none triggered example but configures the RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a trigger. For simplicity both example use PXI_Trig0 and the functionality is enabled by adding the tag __--trigger__.
 
 ```
 python source\RFSAGettingStartedIQDevice.py --resource <your device name> --trigger
