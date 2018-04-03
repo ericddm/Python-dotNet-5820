@@ -87,8 +87,6 @@ if args.trigger == True:
     print("IQ Out Export Start Trigger: " +
     str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
 
-instrSession.DriverUtility.Commit()
-
 # Start Generation
 instrSession.Initiate()
 
