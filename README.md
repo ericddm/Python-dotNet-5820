@@ -1,8 +1,14 @@
 ## PXIe-5820 Python .NET Example
 
-This examples shows how to setup a system and run very basics RF examples from Python. The
-approach are two approaches: calling the CLR (Common Language Runtime) to directly interface
-with .NET classes and creating wrappers around the driver c dll using cpython.
+This examples shows how to setup the enviroment and run very basics RF examples from Python. 
+There are two approaches: calling the CLR (Common Language Runtime) to directly interface
+with .NET classes and creating wrappers around the driver c dll using cpython. These examples
+use Python .NET as a way of importing the .NET classes into Python.
+
+__Please be aweare that NI-RFSA driver neither NI-RFSG drivers are officially supported
+in Python. Official support is provide only through .NET and LabVIEW APIs. This is provided
+as a last resort alternative but please remeber that any issues, it being usability or bugs
+not reproduceble in .NET or LabVIEW will not be supported.__
 
 ### Setting up Environment
 
