@@ -83,7 +83,7 @@ if args.trigger:
     print("IQ In Start Trigger Type: " +
     str(instrSession.Configuration.Triggers.StartTrigger.Type))
 
-    print("Waiting for tigger.........")
+    print("Waiting for tigger, you have 10 seconds before a time out, hurry .........")
  
 # Begin Acquisition and read data     
 timeout = PrecisionTimeSpan(10.0)
