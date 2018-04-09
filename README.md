@@ -5,7 +5,7 @@ There are two approaches: calling the CLR (Common Language Runtime) to directly 
 with .NET classes and creating wrappers around the driver c dll using cpython. These examples
 use Python .NET as a way of importing the .NET classes into Python.
 
-__Please be aweare that NI-RFSA driver neither NI-RFSG drivers are officially supported
+__Please be aweare that NI-RFSA neither NI-RFSG APIs are officially supported
 in Python. Official support is provide only through .NET and LabVIEW APIs. This is provided
 as a last resort alternative but please remeber that any issues, it being usability or bugs
 not reproduceble in .NET or LabVIEW will not be supported.__
