@@ -7,7 +7,7 @@ use Python .NET as a way of importing the .NET classes into Python.
 
 __Please be aware that NI-RFSA neither NI-RFSG APIs are officially supported
 in Python. Official support is provided through .NET and LabVIEW APIs. This is provided
-as a last resort alternative but please remember that any issues, it being usability or bugs
+as a last resort alternative but please remember that any issue, it being usability or bugs
 not reproducible in .NET or LabVIEW, will be your resnponsability.__
 
 ### Setting up Environment
