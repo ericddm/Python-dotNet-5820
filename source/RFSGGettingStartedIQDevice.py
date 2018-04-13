@@ -89,7 +89,7 @@ if args.trigger == True:
     print("IQ Out Export Start Trigger: " +
     str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
     instrSession.Triggers.StartTrigger.ExportedOutputTerminal = \
-    RfsgStartTriggerExportedOutputTerminal.FromString("PXI_Trig0")
+    RfsgStartTriggerExportedOutputTerminal.FromString("PFI0")
     print("IQ Out Export Start Trigger: " +
     str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
 

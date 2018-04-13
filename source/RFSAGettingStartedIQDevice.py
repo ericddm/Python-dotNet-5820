@@ -72,11 +72,11 @@ instrSession.Configuration.IQ.NumberOfSamples = SamplesPerRecord
 print("Number of Samples per Record: " + str(instrSession.Configuration.IQ.NumberOfSamples))
 
 if args.trigger:
-    print("IQ In Start Trigger: " +
+    print("IQ In Start Trigger Source: " +
     str(instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source))
     instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source = \
-    RfsaDigitalEdgeStartTriggerSource.PxiTriggerLine0
-    print("IQ In Start Trigger: " +
+    RfsaDigitalEdgeStartTriggerSource.Pfi0
+    print("IQ In Start Trigger Source: " +
     str(instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source))
     print("IQ In Start Trigger Type: " +
     str(instrSession.Configuration.Triggers.StartTrigger.Type))
@@ -86,8 +86,8 @@ if args.trigger:
     str(instrSession.Configuration.Triggers.StartTrigger.Type))
 
     print("Waiting for tigger, you have 10 seconds before a time out, hurry .........")
- 
-# Begin Acquisition and read data     
+
+# Begin Acquisition and read data
 timeout = PrecisionTimeSpan(10.0)
 nicomplexdoublearray = instrSession.Acquisition.IQ.ReadIQSingleRecordComplex(timeout)
 
