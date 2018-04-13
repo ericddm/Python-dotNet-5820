@@ -3,14 +3,19 @@ import sys
 import time
 import os
 import argparse
+import csv
 
 import numpy as np
 
 # Argparse section
 parser = argparse.ArgumentParser()
-parser.add_argument('--resource')
+parser.add_argument('--resource', \
+    help="enter instrument resource name")
 parser.add_argument('--trigger', action='store_true', default=False, \
-help="select start trigger source")
+    help="enable trigger on PXITrig0")
+parser.add_argument('--iqrate', default=1e6, type=float, \
+    help="enter IQ rate")
+
 args = parser.parse_args()
 
 # Location of assemblies
@@ -33,6 +38,7 @@ from NationalInstruments import ComplexDouble
 ResourceName = args.resource # Instrument alias in MAX
 IQOutCarrierFrequency = 1000.0 # FPGA DSP Frequencyshift
 IQOutPortLevel = 0.5
+IQOutIQRate = args.iqrate
 
 # Initialize Instrument
 instrSession = NIRfsg(ResourceName, True, False)
@@ -63,7 +69,7 @@ instrSession.RF.PowerLevelType = RfsgRFPowerLevelType.PeakPower
 print("IQ Out Power Level Type: " + str(instrSession.RF.PowerLevelType))
 
 print("IQ Out IQ Rate: " + str(instrSession.Arb.IQRate))
-instrSession.Arb.IQRate = 1e6
+instrSession.Arb.IQRate = IQOutIQRate
 print("IQ Out IQ Rate: " + str(instrSession.Arb.IQRate))
 
 print("IQ Out isWaveformRepeatCountFinite: " + str(instrSession.Arb.IsWaveformRepeatCountFinite))
@@ -75,8 +81,8 @@ instrSession.Arb.WaveformRepeatCount = 1
 print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount))
 
 # Write DC values to I
-iData = np.ones(1024)
-qData = np.zeros(1024)
+iData = np.ones(1000)
+qData = np.zeros(1000)
 instrSession.Arb.WriteWaveform("wfm0", iData, qData)
 
 if args.trigger == True:
@@ -90,9 +96,8 @@ if args.trigger == True:
 # Start Generation
 instrSession.Initiate()
 
-if args.trigger == False:
-    # Wait for user to stop script
-    input("Press Enter to continue...")
+# Wait for user to stop script
+input("Press Enter to continue...")
 
 # Abort Generation
 instrSession.Abort()

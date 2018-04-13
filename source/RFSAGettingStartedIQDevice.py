@@ -3,15 +3,17 @@ import sys
 import time
 import os
 import argparse
+import csv
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Argparse section
 parser = argparse.ArgumentParser()
-parser.add_argument('--resource')
+parser.add_argument('--resource', \
+    help="enter instrument resource name")
 parser.add_argument('--trigger', action='store_true', default=False, \
-help="select start trigger source")
+    help="enable trigger on PXITrig0")
 args = parser.parse_args()
 
 # Location of assemblies
@@ -35,7 +37,7 @@ ResourceName = args.resource # Instrument alias in MAX
 IQinVerticalRange = 0.5 # Vpp
 IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQinRate = 1e6 # Samples per second
-SamplesPerRecord = 2048
+SamplesPerRecord = 10000
 
 # Initialize Instrument
 instrSession = NIRfsa(ResourceName, True, False)
