@@ -63,16 +63,14 @@ python source\RFSAGettingStartedIQDevice.py --resource <your device name>
 #### Example using both RFSA and RFSG with a trigger
 This example is very similar to first none triggered example but configures the
 RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a
-trigger. Expected string can be found on RFSA/G API help.
+trigger. Expected string can be found in the RFSA/G API help.
 
 ```
-python source\RFSAGettingStartedIQDevice.py --resource <your device name>
---trigger PXI_Trig0
+python source\RFSAGettingStartedIQDevice.py --resource <your device name> --trigger PXI_Trig0
 ```
 
 ```
-python source\RFSGGettingStartedIQDevice.py --resource <your device name>
---trigger PXI_Trig0
+python source\RFSGGettingStartedIQDevice.py --resource <your device name> --trigger PXI_Trig0
 ```
 
 #### Example using both RFSA and RFSG with a marker
@@ -83,14 +81,11 @@ a trigger is sent over the selected terminal. In the previous example only the
 __StartEvent__ sent out a trigger.
 
 ```
-python source\RFSGGettingStartedIQDevice.py --resource <your device name>
---marker PXI_Trig0
-
+python source\RFSGGettingStartedIQDevice.py --resource <your device name> --marker PXI_Trig0
 ```
 
 ```
-python source\RFSAGettingStartedIQDevice.py --resource <your device name>
---trigger PXI_Trig0
+python source\RFSAGettingStartedIQDevice.py --resource <your device name> --trigger PXI_Trig0
 ```
 
 ![ILoopback](images/ILoopbackPicture.PNG)

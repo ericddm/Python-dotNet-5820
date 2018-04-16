@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser()
 parser.add_argument('--resource', \
     help="enter instrument resource name")
-parser.add_argument('--trigger', action='store_true', default=False, \
-    help="enable trigger on PXITrig0")
+parser.add_argument('--trigger', \
+    help="enable trigger on requested terminal")
 args = parser.parse_args()
 
 # Location of assemblies
@@ -38,6 +38,7 @@ IQinVerticalRange = 0.5 # Vpp
 IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQinRate = 1e6 # Samples per second
 SamplesPerRecord = 10000
+IQinTriggerSource = args.trigger
 
 # Initialize Instrument
 instrSession = NIRfsa(ResourceName, True, False)
@@ -75,13 +76,13 @@ if args.trigger:
     print("IQ In Start Trigger Source: " +
     str(instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source))
     instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source = \
-    RfsaDigitalEdgeStartTriggerSource.Pfi0
+        RfsaDigitalEdgeStartTriggerSource.FromString(IQinTriggerSource)
     print("IQ In Start Trigger Source: " +
     str(instrSession.Configuration.Triggers.StartTrigger.DigitalEdge.Source))
     print("IQ In Start Trigger Type: " +
     str(instrSession.Configuration.Triggers.StartTrigger.Type))
     instrSession.Configuration.Triggers.StartTrigger.Type = \
-    RfsaStartTriggerType.DigitalEdge
+        RfsaStartTriggerType.DigitalEdge
     print("IQ In Start Trigger Type: " +
     str(instrSession.Configuration.Triggers.StartTrigger.Type))
 

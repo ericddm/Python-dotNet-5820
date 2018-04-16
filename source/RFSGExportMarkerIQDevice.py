@@ -11,8 +11,8 @@ import numpy as np
 parser = argparse.ArgumentParser()
 parser.add_argument('--resource', \
     help="enter instrument resource name")
-parser.add_argument('--trigger', default="none", \
-    help="enable trigger on requested terminal")
+parser.add_argument('--marker', \
+    help="where to output the marker")
 parser.add_argument('--iqrate', default=1e6, type=float, \
     help="enter IQ rate")
 
@@ -39,7 +39,7 @@ ResourceName = args.resource # Instrument alias in MAX
 IQOutCarrierFrequency = 1000.0 # FPGA DSP Frequencyshift
 IQOutPortLevel = 0.5
 IQOutIQRate = args.iqrate
-IQOutTriggerDestination = args.trigger
+IQOutMarkerOutput = args.marker
 
 # Initialize Instrument
 instrSession = NIRfsg(ResourceName, True, False)
@@ -62,12 +62,15 @@ instrSession.IQOutPort[""].Level = IQOutPortLevel
 print("IQ Out Port Level: " + str(instrSession.IQOutPort[""].Level))
 
 print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
-instrSession.Arb.GenerationMode = RfsgWaveformGenerationMode.ArbitraryWaveform
+instrSession.Arb.GenerationMode = RfsgWaveformGenerationMode.Script
 print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
 
-print("IQ Out Power Level Type: " + str(instrSession.RF.PowerLevelType))
-instrSession.RF.PowerLevelType = RfsgRFPowerLevelType.PeakPower
-print("IQ Out Power Level Type: " + str(instrSession.RF.PowerLevelType))
+print("IQ Out Marker Output Terminal: " + \
+    str(instrSession.DeviceEvents.MarkerEvents[0].ExportedOutputTerminal))
+instrSession.DeviceEvents.MarkerEvents[0].ExportedOutputTerminal = \
+RfsgMarkerEventExportedOutputTerminal.FromString(IQOutMarkerOutput)
+print("IQ Out Marker Output Terminal: " + \
+    str(instrSession.DeviceEvents.MarkerEvents[0].ExportedOutputTerminal))
 
 print("IQ Out IQ Rate: " + str(instrSession.Arb.IQRate))
 instrSession.Arb.IQRate = IQOutIQRate
@@ -84,15 +87,15 @@ print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount)
 # Write DC values to I
 iData = np.ones(1000)
 qData = np.zeros(1000)
-instrSession.Arb.WriteWaveform("wfm0", iData, qData)
+instrSession.Arb.WriteWaveform("waveformWithMarkers", iData, qData)
 
-if args.trigger is not "none":
-    print("IQ Out Export Start Trigger: " +
-    str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
-    instrSession.Triggers.StartTrigger.ExportedOutputTerminal = \
-        RfsgStartTriggerExportedOutputTerminal.FromString(IQOutTriggerDestination)
-    print("IQ Out Export Start Trigger: " +
-    str(instrSession.Triggers.StartTrigger.ExportedOutputTerminal))
+# Write Marler Script
+instrSession.Arb.Scripting.WriteScript( \
+"script generateWaveformWithMarkers \n" \
+"   repeat forever \n" \
+"      generate waveformWithMarkers marker0(0)\n" \
+"   end repeat \n" \
+"end script")
 
 # Start Generation
 instrSession.Initiate()
