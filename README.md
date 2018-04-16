@@ -60,15 +60,37 @@ python source\RFSGGettingStartedIQDevice.py --resource <your device name>
 python source\RFSAGettingStartedIQDevice.py --resource <your device name>
 ```
 
-#### Example using both RFSA and RFSG and a trigger
-This example is very similar to first none triggered example but configures the RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a trigger. For simplicity both example use PXI_Trig0 and the functionality is enabled by adding the tag __--trigger__.
+#### Example using both RFSA and RFSG with a trigger
+This example is very similar to first none triggered example but configures the
+RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a
+trigger. Expected string can be found on RFSA/G API help.
 
 ```
-python source\RFSAGettingStartedIQDevice.py --resource <your device name> --trigger
+python source\RFSAGettingStartedIQDevice.py --resource <your device name>
+--trigger PXI_Trig0
 ```
 
 ```
-python source\RFSGGettingStartedIQDevice.py --resource <your device name> --trigger
+python source\RFSGGettingStartedIQDevice.py --resource <your device name>
+--trigger PXI_Trig0
+```
+
+#### Example using both RFSA and RFSG with a marker
+This example shows how to generate a trigger with a marker at a specific sample
+of the waveform. Using the timeout as a test you can now start the generation
+first and trigger your acquisition later since verytime the waveform is looped,
+a trigger is sent over the selected terminal. In the previous example only the
+__StartEvent__ sent out a trigger.
+
+```
+python source\RFSGGettingStartedIQDevice.py --resource <your device name>
+--marker PXI_Trig0
+
+```
+
+```
+python source\RFSAGettingStartedIQDevice.py --resource <your device name>
+--trigger PXI_Trig0
 ```
 
 ![ILoopback](images/ILoopbackPicture.PNG)
