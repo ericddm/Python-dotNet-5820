@@ -50,7 +50,10 @@ This python script was created based on the RFSA example called: "RFSG Getting S
 This python script was created based on the RFSA example called: "RFSA Getting Started IQ (IQ Device).vi"
 
 #### Example using both RFSA and RFSG
-Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuously generate until the user presses "enter". Please note that the acquired tone frequency is configured by shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure IQ Rate. Run RFSG first which will continuously generate a tone and then run the RFSA script.
+Instrument set with a pair mmpx cables looping I In (+/-) to I Out (+/-). The RFSG example will continuously
+generate until the user presses "enter". Please note that the acquired tone frequency is configured by
+shifting by 1 KHz the IQ Out Carrier Frequency instead of generating a waveform of 1 KHz at the configure
+IQ Rate. Run RFSG first which will continuously generate a tone and then run the RFSA script.
 
 ```
 python source\RFSGGettingStartedIQDevice.py --resource <your device name>
@@ -61,9 +64,9 @@ python source\RFSAGettingStartedIQDevice.py --resource <your device name>
 ```
 
 #### Example using both RFSA and RFSG with a trigger
-This example is very similar to first none triggered example but configures the
-RFSG to export a start trigger and the RFSA to wait __10 seconds__ for a
-trigger. Expected string can be found in the RFSA/G API help.
+This example is very similar to first none triggered example but configures the RFSG to export
+a start trigger and the RFSA to wait __10 seconds__ for a trigger. Expected string can be found
+in the RFSA/G API help.
 
 ```
 python source\RFSAGettingStartedIQDevice.py --resource <your device name> --trigger PXI_Trig0
@@ -76,9 +79,9 @@ python source\RFSGGettingStartedIQDevice.py --resource <your device name> --trig
 #### Example using both RFSA and RFSG with a marker
 This example shows how to generate a trigger with a marker at a specific sample
 of the waveform. Using the timeout as a test you can now start the generation
-first and trigger your acquisition later since verytime the waveform is looped,
-a trigger is sent over the selected terminal. In the previous example only the
-__StartEvent__ sent out a trigger.
+first and trigger your acquisition later because everytime the waveform is looped,
+a trigger is sent over the selected terminal. In the previous example only the __StartEvent__
+sent out a trigger.
 
 ```
 python source\RFSGGettingStartedIQDevice.py --resource <your device name> --marker PXI_Trig0

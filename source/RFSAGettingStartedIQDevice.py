@@ -13,7 +13,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--resource', \
     help="enter instrument resource name")
 parser.add_argument('--trigger', \
-    help="enable trigger on requested terminal")
+    help="enable trigger on requested terminal") 
+parser.add_argument('--iqrate', default=1e6, type=float, \
+    help="enter IQ rate")
+parser.add_argument('--samples', default=1000, type=int, \
+    help="enter number of samples to fetch")
+
 args = parser.parse_args()
 
 # Location of assemblies
@@ -36,8 +41,8 @@ from NationalInstruments import ComplexDouble
 ResourceName = args.resource # Instrument alias in MAX
 IQinVerticalRange = 0.5 # Vpp
 IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
-IQinRate = 1e6 # Samples per second
-SamplesPerRecord = 10000
+IQinRate = args.iqrate
+SamplesPerRecord = args.samples # Samples per second
 IQinTriggerSource = args.trigger
 
 # Initialize Instrument

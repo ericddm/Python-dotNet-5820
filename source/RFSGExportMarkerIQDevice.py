@@ -15,6 +15,8 @@ parser.add_argument('--marker', \
     help="where to output the marker")
 parser.add_argument('--iqrate', default=1e6, type=float, \
     help="enter IQ rate")
+parser.add_argument("--iqcsv", \
+    help="enter IQ file absolute path")
 
 args = parser.parse_args()
 
@@ -36,7 +38,7 @@ from NationalInstruments import ComplexDouble
 
 # Instrument Settings
 ResourceName = args.resource # Instrument alias in MAX
-IQOutCarrierFrequency = 1000.0 # FPGA DSP Frequencyshift
+IQOutCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQOutPortLevel = 0.5
 IQOutIQRate = args.iqrate
 IQOutMarkerOutput = args.marker
@@ -84,9 +86,22 @@ print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount)
 instrSession.Arb.WaveformRepeatCount = 1
 print("IQ Out WaveformRepeatCount: " + str(instrSession.Arb.WaveformRepeatCount))
 
-# Write DC values to I
-iData = np.ones(1000)
-qData = np.zeros(1000)
+# Create waveform to write either from file or default to one
+iData, qData = [], []
+if args.iqcsv is not None:
+    # Import CSV File
+    with open(args.iqcsv, 'r') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            iData.append(row[0]);
+        iData = np.asarray(iData, dtype=np.float32)
+    qData = np.zeros(len(iData))
+    qData = np.asarray(qData, dtype=np.float32)
+else:
+    # Write DC values to I
+    iData = np.ones(1000)
+    qData = np.zeros(1000)
+
 instrSession.Arb.WriteWaveform("waveformWithMarkers", iData, qData)
 
 # Write Marler Script
