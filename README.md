@@ -79,9 +79,9 @@ python source\RFSGGettingStartedIQDevice.py --resource <your device name> --trig
 #### Example using both RFSA and RFSG with a marker
 This example shows how to generate a trigger with a marker at a specific sample
 of the waveform. Using the timeout as a test you can now start the generation
-first and trigger your acquisition later because everytime the waveform is looped,
+first and trigger your acquisition later because, everytime the generation loops the wfm,
 a trigger is sent over the selected terminal. In the previous example only the __StartEvent__
-sent out a trigger.
+sent out a trigger and this only happnes the first iteration of the waveform generation.
 
 ```
 python source\RFSGGettingStartedIQDevice.py --resource <your device name> --marker PXI_Trig0
