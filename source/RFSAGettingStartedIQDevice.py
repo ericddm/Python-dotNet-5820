@@ -18,6 +18,8 @@ parser.add_argument('--iqrate', default=1e6, type=float, \
     help="enter IQ rate")
 parser.add_argument('--samples', default=1000, type=int, \
     help="enter number of samples to fetch")
+parser.add_argument("--reference", default="OnboardClock", \
+    help="select 10 MHZ reference source")
 
 args = parser.parse_args()
 
@@ -44,6 +46,7 @@ IQinCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQinRate = args.iqrate
 SamplesPerRecord = args.samples # Samples per second
 IQinTriggerSource = args.trigger
+ReferenceSource = args.reference
 
 # Initialize Instrument
 instrSession = NIRfsa(ResourceName, True, False)

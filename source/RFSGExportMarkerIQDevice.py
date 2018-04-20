@@ -17,6 +17,8 @@ parser.add_argument('--iqrate', default=1e6, type=float, \
     help="enter IQ rate")
 parser.add_argument("--iqcsv", \
     help="enter IQ file absolute path")
+parser.add_argument("--reference", default="OnboardClock", \
+    help="select 10 MHZ reference source")
 
 args = parser.parse_args()
 
@@ -42,13 +44,15 @@ IQOutCarrierFrequency = 0.0 # FPGA DSP Frequencyshift
 IQOutPortLevel = 0.5
 IQOutIQRate = args.iqrate
 IQOutMarkerOutput = args.marker
+ReferenceSource = args.reference
 
 # Initialize Instrument
 instrSession = NIRfsg(ResourceName, True, False)
 
 # Configure Instrument
 print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
-instrSession.FrequencyReference.Configure(RfsgFrequencyReferenceSource.PxiClock, 10e6)
+instrSession.FrequencyReference. \
+    Configure(RfsgFrequencyReferenceSource.FromString(args.reference), 10e6)
 print("Reference Clock Source: " + instrSession.FrequencyReference.Source.ToString())
 
 print("IQ Out Output Port: " + str(instrSession.Arb.OutputPort))
@@ -70,7 +74,7 @@ print("IQ Out Generation Mode: " + str(instrSession.Arb.GenerationMode))
 print("IQ Out Marker Output Terminal: " + \
     str(instrSession.DeviceEvents.MarkerEvents[0].ExportedOutputTerminal))
 instrSession.DeviceEvents.MarkerEvents[0].ExportedOutputTerminal = \
-RfsgMarkerEventExportedOutputTerminal.FromString(IQOutMarkerOutput)
+    RfsgMarkerEventExportedOutputTerminal.FromString(IQOutMarkerOutput)
 print("IQ Out Marker Output Terminal: " + \
     str(instrSession.DeviceEvents.MarkerEvents[0].ExportedOutputTerminal))
 
